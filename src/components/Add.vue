@@ -41,10 +41,20 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-container>
+      <v-row>
+        <v-col><v-btn @click="retrieve">Retrieve records</v-btn></v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <script>
+// import { getDatabase } from "firebase/database";
+// const database = getDatabase();
+// console.log(database)
+import axios from "axios";
+
 const today = new Date();
 
 const months = [
@@ -65,14 +75,7 @@ const todaysDate = `${today.getFullYear()}-${
   today.getMonth() + 1
 }-${today.getDate()}`;
 
-import app from '../db'
-import axios from 'axios'
-
-console.log(app)
-
-
 export default {
-
   data() {
     return {
       today_data: {},
@@ -169,6 +172,12 @@ export default {
       console.log(this.today_data);
       console.log(this.date);
     },
+    retrieve() {
+      axios
+        .get("https://reports-4888c-default-rtdb.firebaseio.com/2021.json")
+        .then((res) => console.log(res.data['December']['16']['name']))
+        .catch((er) => console.log(er));
+    },
     submitRecord() {
       const dateToAdd = new Date(this.date);
       const year = dateToAdd.getFullYear();
@@ -190,11 +199,23 @@ export default {
 
       this.records[year][month][day] = this.today_data;
       console.log(JSON.stringify(this.records));
-      axios.post("https://reports-4888c-default-rtdb.firebaseio.com/" + year + '/' + month + '/' + day, this.today_data).then((res) => {
-        console.log(res)
-      }).catch((err) => {
-        console.log(err)
-      })
+      axios
+        .post(
+          "https://reports-4888c-default-rtdb.firebaseio.com/" +
+            year +
+            "/" +
+            month +
+            "/" +
+            day +
+            ".json",
+          this.today_data
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   computed: {
