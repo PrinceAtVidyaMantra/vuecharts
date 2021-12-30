@@ -65,7 +65,14 @@ const todaysDate = `${today.getFullYear()}-${
   today.getMonth() + 1
 }-${today.getDate()}`;
 
+import app from '../db'
+import axios from 'axios'
+
+console.log(app)
+
+
 export default {
+
   data() {
     return {
       today_data: {},
@@ -183,6 +190,11 @@ export default {
 
       this.records[year][month][day] = this.today_data;
       console.log(JSON.stringify(this.records));
+      axios.post("https://reports-4888c-default-rtdb.firebaseio.com/" + year + '/' + month + '/' + day, this.today_data).then((res) => {
+        console.log(res)
+      }).catch((err) => {
+        console.log(err)
+      })
     },
   },
   computed: {
