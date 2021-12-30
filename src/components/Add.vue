@@ -71,90 +71,90 @@ export default {
       today_data: {},
       date: todaysDate,
       maxDate: todaysDate,
-       records: {
-      '2021': {
-        'January': {
-          1: {
-            ahmad: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
+      records: {
+        2021: {
+          January: {
+            1: {
+              Ahmad: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
 
-            rony: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
+              Rony: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
 
-            sonu: {
-              mcq: 36,
-              files: 2,
-              records: 10,
+              Sonu: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
+            },
+            2: {
+              Ahmad: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
+
+              Rony: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
+
+              Sonu: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
             },
           },
-          2: {
-            ahmad: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
+          February: {
+            1: {
+              Ahmad: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
 
-            rony: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
+              Rony: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
 
-            sonu: {
-              mcq: 36,
-              files: 2,
-              records: 10,
+              Sonu: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
+            },
+            2: {
+              Ahmad: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
+
+              Rony: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
+
+              Sonu: {
+                mcq: 36,
+                files: 2,
+                records: 10,
+              },
             },
           },
         },
-        'February': {
-          1: {
-            ahmad: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
-
-            rony: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
-
-            sonu: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
-          },
-          2: {
-            ahmad: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
-
-            rony: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
-
-            sonu: {
-              mcq: 36,
-              files: 2,
-              records: 10,
-            },
-          },
-        },
-      },  
-    },
+      },
     };
   },
   methods: {
@@ -169,20 +169,20 @@ export default {
       const day = dateToAdd.getDate();
 
       if (year in this.records) {
-         console.log('year found' + year)
+        console.log("year found" + year);
         if (!(month in this.records[year])) {
           this.records[year][month] = {};
-          console.log('month created')
+          console.log("month created");
         }
       } else {
-         console.log('year not found')
+        console.log("year not found");
         this.records[year] = {};
         this.records[year][month] = {};
-        console.log('crweated' +  this.records[year][month])
+        console.log("crweated" + this.records[year][month]);
       }
 
       this.records[year][month][day] = this.today_data;
-      console.log(JSON.stringify(this.records['2021']))
+      console.log(JSON.stringify(this.records));
     },
   },
   computed: {
