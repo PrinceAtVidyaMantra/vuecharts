@@ -109,7 +109,7 @@ export default new Vuex.Store({
             },
           },
         },
-      },
+      },  
     },
     users: ["Ahmad", "Rony", "Sonu"],
     fields: [
