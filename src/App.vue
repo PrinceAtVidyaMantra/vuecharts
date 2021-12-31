@@ -38,19 +38,22 @@
     </v-app-bar>
 
     <v-main>
-      <Add/>
+      <v-row>
+        <v-col><h2 class="text-center mt-5">Daily Data Entry Report of users</h2></v-col>
+      </v-row>
+     <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Add from './components/Add';
+
 
 export default {
   name: 'App',
 
   components: {
-    Add,
+   
   },
 
   data: () => ({

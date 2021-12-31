@@ -174,8 +174,23 @@ export default {
     },
     retrieve() {
       axios
-        .get("https://reports-4888c-default-rtdb.firebaseio.com/2021.json")
-        .then((res) => console.log(res.data['January']))
+        .get("https://reports-4888c-default-rtdb.firebaseio.com/records/2021/January/1.json")
+        .then((res) => {
+          let userArray = []
+           
+          for(let key in res.data){
+             let records = []
+            let user = key
+            const data = res.data[key]
+            for(let i in data){
+              
+
+             records.push(data[i])
+            }
+            userArray.push([user, ...records])
+          }
+          console.log(userArray)
+        })
         .catch((er) => console.log(er));
     },
     submitRecord() {
@@ -198,17 +213,10 @@ export default {
       }
 
       this.records[year][month][day] = this.today_data;
-      console.log(JSON.stringify(this.records));
+     
       axios
-        .post(
-          "https://reports-4888c-default-rtdb.firebaseio.com/" +
-            year +
-            "/" +
-            month +
-            "/" +
-            day +
-            ".json",
-          this.today_data
+        .put(
+          "https://reports-4888c-default-rtdb.firebaseio.com/records.json",this.records
         )
         .then((res) => {
           console.log(res);
