@@ -175,7 +175,7 @@ export default {
     retrieve() {
       axios
         .get("https://reports-4888c-default-rtdb.firebaseio.com/2021.json")
-        .then((res) => console.log(res.data['December']['16']['name']))
+        .then((res) => console.log(res.data['January']))
         .catch((er) => console.log(er));
     },
     submitRecord() {
