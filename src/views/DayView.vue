@@ -7,7 +7,6 @@
 
 <script>
 import { GChart } from "vue-google-charts";
-import axios from "axios";
 import SelectionPane from '../components/SelectionPane.vue';
 export default {
   name: "App",
@@ -18,10 +17,7 @@ export default {
   data() {
     return {
       
-      chartData: [
-        ["Users", "Sales", "Expenses", "Profit"],
-        
-      ],
+      
       chartOptions: {
         chart: {
           title: "Company Performance",
@@ -35,36 +31,15 @@ export default {
     fields() {
       return this.$store.state.fields;
     },
+    chartData(){
+     return this.$store.getters.getCurrentData;
+    }
   },
   created() {
-      const dataCols = this.fields.map((field) => {
-      return field.text;
-    });
-    this.chartData[0] = ["Users", ...dataCols];
+      this.$store.dispatch("setCurrentData")
 
 
-    axios
-      .get(
-        "https://reports-4888c-default-rtdb.firebaseio.com/records/2021/January/2.json"
-      )
-      .then((res) => {
-        this.todaysRecord = res.data;
-        
-        for (let user in this.todaysRecord) {
-         
-          const userData = [];
-         
-          userData.push(user);
-          for (let i in this.todaysRecord[user]) {
-             parseInt(this.todaysRecord[user][i])
-           userData.push(parseInt(this.todaysRecord[user][i]))
-             
-          }
-          this.chartData.push(userData);
-          
-        }
-      })
-      .catch((er) => console.log(er));
+    
     
   },
 };

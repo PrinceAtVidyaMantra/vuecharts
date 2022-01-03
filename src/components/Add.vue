@@ -214,16 +214,7 @@ export default {
 
       this.records[year][month][day] = this.today_data;
      
-      axios
-        .put(
-          "https://reports-4888c-default-rtdb.firebaseio.com/records.json",this.records
-        )
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.$store.dispatch("updateTodaysRecords", this.records)
     },
   },
   computed: {
