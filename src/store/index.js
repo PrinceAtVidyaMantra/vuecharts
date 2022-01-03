@@ -58,7 +58,8 @@ export default new Vuex.Store({
 
   },
   getters: {
-    getCurrentData: state => state.currentData
+    getCurrentData: state => state.currentData,
+    getFields : state => state.fields
   },
   actions: {
     setCurrentData(state) {
