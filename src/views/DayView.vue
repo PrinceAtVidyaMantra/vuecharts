@@ -45,7 +45,7 @@ export default {
 
     axios
       .get(
-        "https://reports-4888c-default-rtdb.firebaseio.com/records/2021/December/15.json"
+        "https://reports-4888c-default-rtdb.firebaseio.com/records/2021/January/2.json"
       )
       .then((res) => {
         this.todaysRecord = res.data;
@@ -63,9 +63,6 @@ export default {
           this.chartData.push(userData);
           
         }
-       
-        
-        
       })
       .catch((er) => console.log(er));
     

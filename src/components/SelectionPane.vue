@@ -6,7 +6,7 @@
       </v-col>
       <v-col cols="2">
         <v-select
-          :items="Object.keys(records)"
+          :items="years"
           v-model="year"
           class="ma-4 mt-6"
           solo
@@ -15,7 +15,7 @@
       </v-col>
       <v-col cols="2">
         <v-select
-          :items="Object.keys(records[year])"
+          :items="months"
           v-model="month"
           class="ma-4 mt-6"
           solo
@@ -24,7 +24,7 @@
       </v-col>
       <v-col cols="2">
         <v-select
-          :items="Object.keys(records[year][month])"
+          :items="days"
           v-model="day"
           class="ma-4 mt-6"
           solo
@@ -58,6 +58,7 @@ export default {
       ],
       fieldsToShow: [],
       days: [],
+      years:[]
     };
   },
 };
