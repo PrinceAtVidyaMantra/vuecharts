@@ -1,10 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -26,35 +22,33 @@
       </div>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <div>
+        <v-tabs>
+          <v-tab to="/">Add Record</v-tab>
+          <v-tab to="/view/day">View Reports</v-tab>
+        
+        </v-tabs>
+      </div>
     </v-app-bar>
 
     <v-main>
       <v-row>
-        <v-col><h2 class="text-center mt-5">Daily Data Entry Report of users</h2></v-col>
+        <v-col
+          ><h1 class="text-center my-10">
+            Daily Data Entry Report of users
+          </h1></v-col
+        >
       </v-row>
-     <router-view></router-view>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-
-
 export default {
-  name: 'App',
+  name: "App",
 
-  components: {
-   
-  },
+  components: {},
 
   data: () => ({
     //
